@@ -1,0 +1,15 @@
+[Service]
+Type = oneshot
+ExecStart = /usr/local/bin/herald-wait '${REMOTE}'
+
+RemainAfterExit = yes
+
+PrivateTmp = yes
+PrivateUsers = yes
+
+[Unit]
+After = network-online.target
+
+[Install]
+WantedBy = multi-user.target
+

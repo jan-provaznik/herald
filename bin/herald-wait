@@ -1,0 +1,16 @@
+#!/bin/bash
+
+[ -z "${1}" ] && {
+  echo 'Remote endpoint is required.'
+  exit 1
+}
+
+until result=$(curl -fs -m 1 "${1}")
+do
+  echo "Remote ${1} timed out. I can do this all day."
+  sleep 1
+done
+
+echo "Remote ${1} reached successfully. Exiting."
+exit 0
+

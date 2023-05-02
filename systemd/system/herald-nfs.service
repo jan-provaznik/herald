@@ -1,0 +1,15 @@
+[Service]
+Type = simple
+ExecStartPre = /bin/bash -c 'date +%%s > /tmp/nfs-ready'
+ExecStart = /bin/python -m http.server -d /tmp 8081
+
+PrivateTmp = yes
+PrivateUsers = yes
+
+[Unit]
+After = nfs-server.service
+Requires = nfs-server.service
+
+[Install]
+WantedBy = multi-user.target
+

@@ -1,0 +1,16 @@
+Simple remote heralding. A small step for the humankind, a giant leap towards a
+completely over-engineered solution.
+
+Example
+
+  Consider a remote machine. It exposes some service. Consider another
+  machine. One of its services depends on the remote service. It must wait for
+  the remote service to be available.
+
+  Suppose the remote service is a NFS server. We utilize herald-nfs.service on
+  the remote machine. Once nfs-server.service finishes herald-nfs.service
+  activates, exposing a simple HTTP server which can be queried.
+
+  The other machine utilizes herald-wait@.service with its instance unit
+  overridden to define the remote path.
+
